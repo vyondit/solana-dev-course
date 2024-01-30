@@ -1,4 +1,3 @@
-import fs from 'fs';
 import * as dotenv from 'dotenv';
 import { getKeypairFromEnvironment } from "@solana-developers/helpers";
 
