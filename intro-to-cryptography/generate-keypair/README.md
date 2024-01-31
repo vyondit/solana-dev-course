@@ -30,7 +30,7 @@ The script can be run in two modes: create and read.
 To create a new keypair and save it to an environment-specific `.env` file:
 
 ```bash
-node generate_keypair.ts create [environment]
+npx esrun generate_keypair.ts create [environment]
 ```
 
 Where `generate_keypair.ts` is the name of your script, and `[environment]` is one of `development`, `staging`, or `production`.
@@ -38,7 +38,7 @@ Where `generate_keypair.ts` is the name of your script, and `[environment]` is o
 Example:
 
 ```bash
-node generateKeypair.js create development
+npx esrun generateKeypair.js create development
 ```
 
 ### Reading a Keypair
@@ -46,13 +46,13 @@ node generateKeypair.js create development
 To read and display a keypair from an existing `.env` file:
 
 ```bash
-node generate-keypair.ts read [environment]
+npx esrun generate-keypair.ts read [environment]
 ```
 
 Example:
 
 ```bash
-node generate-keypair.ts read development
+npx esrun generate-keypair.ts read development
 ```
 
 ## Security Practices
