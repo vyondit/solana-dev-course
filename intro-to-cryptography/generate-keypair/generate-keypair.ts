@@ -1,11 +1,6 @@
 import * as dotenv from 'dotenv';
+import fs from 'fs/promises';
 import { getKeypairFromEnvironment } from "@solana-developers/helpers";
-
-dotenv.config();
-
-const env = process.env.NODE_ENV || 'development';
-
-dotenv.config({ path: `.env.${env}` });
 
 function isValidSecretKey(key: string): boolean {
   try {
@@ -16,16 +11,27 @@ function isValidSecretKey(key: string): boolean {
   }
 }
 
-try {
-  const secretKey = process.env.SECRET_KEY;
+loadAndValidateKey();
 
-  if (!secretKey || !isValidSecretKey(secretKey)) {
-    throw new Error("Invalid or missing secret key.");
+async function loadAndValidateKey() {
+  try {
+    const env = process.env.NODE_ENV || 'development';
+    const envFileContent = await fs.readFile(`.env.${env}`, { encoding: 'utf-8' });
+    const envConfig = dotenv.parse(envFileContent);
+    for (const k in envConfig) {
+      process.env[k] = envConfig[k];
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+
+    if (!secretKey || !isValidSecretKey(secretKey)) {
+      throw new Error("Invalid or missing secret key.");
+    }
+
+    const keypair = getKeypairFromEnvironment("SECRET_KEY");
+
+    console.log(`✅ Finished! We've loaded our secret key securely, using an env file!`);
+  } catch (error) {
+    console.error(`❌ Error: ${error.message}`);
   }
-
-  const keypair = getKeypairFromEnvironment("SECRET_KEY");
-
-  console.log(`✅ Finished! We've loaded our secret key securely, using an env file!`);
-} catch (error) {
-  console.error(`❌ Error: ${error.message}`);
 }
