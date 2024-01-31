@@ -11,8 +11,8 @@ This script provides a simple and secure way to manage Solana keypairs for diffe
 
 1. **Clone the Repository**:
    ```bash
-   git clone [Your-Repository-URL]
-   cd [Your-Repository-Directory]
+   git clone https://github.com/vyondit/solana-dev-course.git
+   cd solana-dev-course
    ```
 
 2. **Install Dependencies**:
@@ -30,10 +30,10 @@ The script can be run in two modes: create and read.
 To create a new keypair and save it to an environment-specific `.env` file:
 
 ```bash
-node [ScriptName].js create [environment]
+node generate_keypair.ts create [environment]
 ```
 
-Where `[ScriptName].js` is the name of your script, and `[environment]` is one of `development`, `staging`, or `production`.
+Where `generate_keypair.ts` is the name of your script, and `[environment]` is one of `development`, `staging`, or `production`.
 
 Example:
 
@@ -46,13 +46,13 @@ node generateKeypair.js create development
 To read and display a keypair from an existing `.env` file:
 
 ```bash
-node [ScriptName].js read [environment]
+node generate-keypair.ts read [environment]
 ```
 
 Example:
 
 ```bash
-node generateKeypair.js read development
+node generate-keypair.ts read development
 ```
 
 ## Security Practices
