@@ -33,7 +33,7 @@ To create a new keypair and save it to an environment-specific `.env` file:
 npx esrun generate_keypair.ts create [environment]
 ```
 
-Where `generate_keypair.ts` is the name of your script, and `[environment]` is one of `development`, `staging`, or `production`.
+Where `[environment]` is one of `development`, `staging`, or `production`.
 
 Example:
 
