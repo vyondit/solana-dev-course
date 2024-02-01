@@ -28,7 +28,6 @@ async function readKeypair(env: string) {
 
     const keypair = Keypair.fromSecretKey(secretKeyUint8Array);
 
-   // Am I on the wrong track???
     const storedPublicKey = process.env.PUBLIC_KEY || "";
     if (storedPublicKey) {
       console.log(`Stored Public Key: ${storedPublicKey}`);
